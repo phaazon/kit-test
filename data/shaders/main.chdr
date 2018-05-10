@@ -1,0 +1,23 @@
+uniform float offset;
+
+struct V {
+  vec4 chdr_Position;
+};
+
+const vec2[3] CO = vec2[](
+  vec2(-.5, -.5),
+  vec2( .5, -.5),
+  vec2( 0.,  .5)
+);
+
+V map_vertex() {
+  return V(vec4(CO[gl_VertexID] + offset, 0., 1.));
+}
+
+struct F {
+  vec4 color;
+};
+
+F map_frag_data(V) {
+  return F(vec4(.8, .5, .5, 1.));
+}
